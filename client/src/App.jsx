@@ -6,6 +6,7 @@ import Record from "./pages/table";
 import Ap from "./pages/appoiment";
 
 import Aupdate from "./pages/Aupdate";
+import Updatee from "./pages/updpate";
 
 
 
@@ -20,7 +21,7 @@ export default function App() {
 
        
 
-        <Route path="/updatee/:iddd" element={<Aupdate />} />
+        <Route path="/updateee/:iddd" element={<Updatee />} />
         <Route path="/" element={<Record />} />
         <Route path="/add" element={<Ap/>} />
      

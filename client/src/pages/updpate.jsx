@@ -120,17 +120,7 @@ export default function AppointmentForm() {
     });
   };
 
-  const handleNameChange = (e) => {
-    const Name = e.target.value.trim();
-    if (Name === "") {
-      setCValidation(null); // Clear validation error
-    } else if (!isNaN(Name)) {
-      setCValidation("Name cannot be a number");
-    } else {
-      setFormData({ ...formData, Name });
-      setCValidation(null); // Clear validation error
-    }
-  };
+
 
   // Handle seat number change and check if it's already booked
   const handleSeatChange = (e) => {
@@ -236,7 +226,7 @@ export default function AppointmentForm() {
                   placeholder="Enter Name"
                   required
                   className="mt-2 w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
-                  onChange={onchange}
+                  onChange={(e) => setFormData({ ...formData, Name: e.target.value })}
                   value={formData.Name}
                 />
                 <p className="mt-1 text-red-600 text-sm">name can not be number</p>
@@ -275,7 +265,7 @@ export default function AppointmentForm() {
                   readOnly
                   className="mt-2 w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                 />
-                value={formData.price}
+                
               </div>
 
               {/* Seat Number */}
