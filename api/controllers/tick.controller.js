@@ -4,10 +4,10 @@ import ticket from '../models/ticket.model.js';
 // Create an appointment
 export const tcreate = async (req, res) => {
   try {
-    const {Name, location, price, seat } = req.body;
+    const {Name, route, price, seat } = req.body;
     
     const newAppointment = new ticket({
-      Name, location, price, seat
+      Name,  route, price, seat
     });
 
     await newAppointment.save();

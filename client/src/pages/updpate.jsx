@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
@@ -16,7 +16,39 @@ export default function AppointmentForm() {
   const [isSeatBooked, setIsSeatBooked] = useState(false); // State to track if seat is already booked
   console.log(formData);
 
+  const { iddd } = useParams();
+
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    try {
+      const fetchE = async () => {
+        const res = await fetch(
+          `http://localhost:3000/api/gcticket?upId=${iddd}`
+        );
+        const data = await res.json();
+        console.log("data", data);
+
+        if (!res.ok) {
+          console.log(data.message);
+          setPublishError(data.message);
+          return;
+        }
+        if (res.ok) {
+          const selectedE = data.find(
+            (course) => course._id === iddd
+          );
+          if (selectedE) {
+            setFormData(selectedE);
+          }
+        }
+      };
+      fetchE();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [iddd]);
 
   // Price mapping based on the route
   const routePrices = {
@@ -27,18 +59,20 @@ export default function AppointmentForm() {
     "warakapola to balumaha": 1000,
   };
 
-  // Handle submit for the form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/api/cticket", {
-        method: "POST",
+        
+      const res = await fetch(`http://localhost:3000/api/upcticket/${formData._id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+
       });
       const data = await res.json();
+      console.log(data);
       if (!res.ok) {
         setPublishError(data.message);
         return;
@@ -46,9 +80,11 @@ export default function AppointmentForm() {
 
       if (res.ok) {
         setPublishError(null);
-        alert("Successfully submitted!");
+        
+        alert("sucsses ")
         generateTicketPDF();
         navigate("/");
+        
       }
     } catch (error) {
       setPublishError("Something went wrong");
@@ -200,9 +236,10 @@ export default function AppointmentForm() {
                   placeholder="Enter Name"
                   required
                   className="mt-2 w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
-                  onChange={handleNameChange}
+                  onChange={onchange}
+                  value={formData.Name}
                 />
-                {Cvalidation && <p className="mt-1 text-red-600 text-sm">{Cvalidation}</p>}
+                <p className="mt-1 text-red-600 text-sm">name can not be number</p>
               </div>
 
               {/* Route Selection */}
@@ -215,6 +252,7 @@ export default function AppointmentForm() {
                   required
                   className="mt-2 w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                   onChange={handleRouteChange}
+                  value={formData.route}
                 >
                   <option value="">Select Route</option>
                   <option value="kandy to pilimathalwa">Kandy to Pilimathalwa</option>
@@ -237,6 +275,7 @@ export default function AppointmentForm() {
                   readOnly
                   className="mt-2 w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                 />
+                value={formData.price}
               </div>
 
               {/* Seat Number */}
@@ -250,6 +289,7 @@ export default function AppointmentForm() {
                   className="mt-2 w-full bg-gray-100 text-gray-700 border border-gray-300 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
                   onChange={handleSeatChange}
                   disabled={isSeatBooked} // Disable the dropdown if the seat is already booked
+                  value={formData.seat}
                 >
                   <option value="" disabled>Select a seat number</option>
                   {[...Array(50).keys()].map((number) => (

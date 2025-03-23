@@ -20,7 +20,7 @@ router.get('/gcticket', tget);
 router.get('/ucticket/:id', tgett);
 
 // Update an appointment by ID
-router.put('/ucticket/:id', tupdate);
+router.put('/upcticket/:id', tupdate);
 
 // Delete an appointment by ID
 router.delete('/deletcticket/:id', tdelete);

@@ -5,7 +5,7 @@ const ticketSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  location: {
+  route: {
     type: String,
     required: true
   },

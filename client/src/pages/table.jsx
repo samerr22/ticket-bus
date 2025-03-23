@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+
+
 
 export default function ManageEmp() {
   const [Info, setInfo] = useState([]);
@@ -9,10 +9,13 @@ export default function ManageEmp() {
   const [filter, setfilter] = useState([]);
   const [query, setQuery] = useState("");
 
+
+
+
   useEffect(() => {
     const fetchinfo = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/gappointments`);
+        const res = await fetch(`http://localhost:3000/api/gcticket`);
         const data = await res.json();
         console.log(data);
         if (res.ok) {
@@ -54,6 +57,10 @@ export default function ManageEmp() {
     }
   }, [query, Info]);
 
+
+ 
+
+
   return (
     <div className="h-[800px] relative">
     <div className="items-center justify-center flex">
@@ -62,7 +69,7 @@ export default function ManageEmp() {
         <div className="w-full text-center mt-4 mb-6">
           <Link to="/add">
             <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg shadow-lg transition duration-300">
-              Add Appointment
+              booking ticaket
             </button>
           </Link>
         </div>
@@ -76,16 +83,16 @@ export default function ManageEmp() {
                   className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
                 >
                   <h3 className="text-xl font-semibold text-gray-800">
-                    Patient: {course.patientName}
+                    Patient: {course.Name}
                   </h3>
                   <p className="text-gray-600 mt-2">
-                    <strong>Doctor:</strong> {course.doctorName}
+                    <strong>Doctor:</strong> {course.route}
                   </p>
                   <p className="text-gray-600 mt-2">
-                    <strong>Appointment Date:</strong> {course.appointmentDate}
+                    <strong>Appointment Date:</strong> {course.price}
                   </p>
                   <p className="text-gray-600 mt-2">
-                    <strong>Appointment Time:</strong> {course.appointmentTime}
+                    <strong>Seat number:</strong> {course.seat}
                   </p>
   
                   <div className="flex justify-between mt-4">
