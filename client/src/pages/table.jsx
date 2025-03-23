@@ -46,19 +46,19 @@ export default function ManageEmp() {
     } else {
       const filteredData = Info.filter(
         (ticket) =>
-          ticket.Name &&
-          ticket.Name.toLowerCase().includes(query.toLowerCase())
+          ticket.route &&
+          ticket.route.toLowerCase().includes(query.toLowerCase())
       );
       setfilter(filteredData);
     }
   }, [query, Info]);
 
   return (
-    <div className="h-full relative bg-gradient-to-t from-blue-500 to-green-400">
+    <div className="h-[800px] relative bg-gradient-to-t from-blue-500 to-green-400">
       <div className="flex justify-center items-center py-6">
         <div className="w-full max-w-6xl px-4">
           <div className="text-center mb-6">
-            <Link to="/add">
+            <Link to="/">
               <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg shadow-lg transition duration-300">
                 Check Seat
               </button>
@@ -69,7 +69,7 @@ export default function ManageEmp() {
           <div className="mb-6">
             <input
               type="text"
-              placeholder="Search by patient name..."
+              placeholder="Search by location name..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="w-full p-2 border rounded-lg"
@@ -79,6 +79,8 @@ export default function ManageEmp() {
           {loading ? (
             <div className="text-center text-gray-500 py-4">Loading...</div>
           ) : (
+              <>
+              <div className="overflow-x-auto lg:h-[500px] scrollbar-none">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filter.length > 0 ? (
                 filter.map((ticket) => (
@@ -121,6 +123,8 @@ export default function ManageEmp() {
                 <div className="text-center text-gray-500 py-4">No records found</div>
               )}
             </div>
+            </div>
+            </>
           )}
         </div>
       </div>

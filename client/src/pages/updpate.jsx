@@ -83,7 +83,7 @@ export default function AppointmentForm() {
         
         alert("sucsses ")
         generateTicketPDF();
-        navigate("/");
+        navigate("/myticket");
         
       }
     } catch (error) {

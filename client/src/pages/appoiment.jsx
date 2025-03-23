@@ -48,7 +48,7 @@ export default function AppointmentForm() {
         setPublishError(null);
         alert("Successfully submitted!");
         generateTicketPDF();
-        navigate("/");
+        navigate("/myticket");
       }
     } catch (error) {
       setPublishError("Something went wrong");
