@@ -168,8 +168,9 @@ export default function AppointmentForm() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-t from-blue-500 to-green-400">
-      <div className="flex w-full max-w-6xl space-x-8 p-6">
+      <div className="">
         {/* Add Appointment Form */}
+        <div className="flex justify-center items-center">
         <div className="bg-white w-full max-w-md p-6 rounded-2xl shadow-lg border border-gray-200 flex-shrink-0">
           {/* Back Button */}
           <div className="flex justify-start">
@@ -191,8 +192,8 @@ export default function AppointmentForm() {
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Patient Name */}
               <div>
-                <label htmlFor="patientName" className="text-sm font-medium text-gray-700">
-                  Patient Name
+                <label htmlFor="Name" className="text-sm font-medium text-gray-700">
+                   Name
                 </label>
                 <input
                   id="Name"
@@ -228,7 +229,7 @@ export default function AppointmentForm() {
               {/* Display Price */}
               <div>
                 <label htmlFor="price" className="text-sm font-medium text-gray-700">
-                  Price
+                  Price Rs
                 </label>
                 <input
                   id="price"
@@ -280,6 +281,9 @@ export default function AppointmentForm() {
             </form>
           </div>
         </div>
+
+        </div>
+        
       </div>
     </div>
   );

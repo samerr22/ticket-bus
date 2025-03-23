@@ -5,8 +5,9 @@ import Footer from "./components/Footer";
 import Record from "./pages/table";
 import Ap from "./pages/appoiment";
 
-import Aupdate from "./pages/Aupdate";
+
 import Updatee from "./pages/updpate";
+import Buss from "./pages/bus";
 
 
 
@@ -22,8 +23,9 @@ export default function App() {
        
 
         <Route path="/updateee/:iddd" element={<Updatee />} />
-        <Route path="/" element={<Record />} />
+        <Route path="/myticket" element={<Record />} />
         <Route path="/add" element={<Ap/>} />
+        <Route path="/" element={<Buss/>} />
      
      
       </Routes>

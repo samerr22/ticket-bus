@@ -60,7 +60,7 @@ export default function ManageEmp() {
           <div className="text-center mb-6">
             <Link to="/add">
               <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg shadow-lg transition duration-300">
-                Book New Ticket
+                Check Seat
               </button>
             </Link>
           </div>
@@ -87,13 +87,13 @@ export default function ManageEmp() {
                     className="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all"
                   >
                     <h3 className="text-xl font-semibold text-gray-800">
-                      Patient: {ticket.Name}
+                      Name: {ticket.Name}
                     </h3>
                     <p className="text-gray-600 mt-2">
-                      <strong>Doctor:</strong> {ticket.route}
+                      <strong>route:</strong> {ticket.route}
                     </p>
                     <p className="text-gray-600 mt-2">
-                      <strong>Appointment Date:</strong> {ticket.price}
+                      <strong>Price:</strong> Rs {ticket.price}
                     </p>
                     <p className="text-gray-600 mt-2">
                       <strong>Seat Number:</strong> {ticket.seat}
