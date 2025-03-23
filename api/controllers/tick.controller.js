@@ -3,7 +3,7 @@ import Doctor from '../models/docter.model.js';
 import ticket from '../models/ticket.model.js';
 
 // Create an appointment
-export const createAppointment = async (req, res) => {
+export const tcreate = async (req, res) => {
   try {
     const {Name, location, price, seat } = req.body;
     
@@ -21,7 +21,7 @@ export const createAppointment = async (req, res) => {
 
 
 // Get all appointments
-export const getAppointments = async (req, res) => {
+export const tget = async (req, res) => {
   try {
     const appointments = await ticket.find();
     return res.status(200).json(appointments);
@@ -31,7 +31,7 @@ export const getAppointments = async (req, res) => {
 };
 
 // Get a single appointment by ID
-export const getAppointmentById = async (req, res) => {
+export const tgett = async (req, res) => {
   const { id } = req.params;
   try {
     const tiket = await ticket.findById(id);
@@ -45,7 +45,7 @@ export const getAppointmentById = async (req, res) => {
 };
 
 // Update an appointment
-export const updateAppointment = async (req, res) => {
+export const tupdate = async (req, res) => {
   const { id } = req.params;
   try {
     const tiket = await ticket.findByIdAndUpdate(id, req.body, { new: true });
@@ -59,7 +59,7 @@ export const updateAppointment = async (req, res) => {
 };
 
 // Delete an appointment
-export const deleteAppointment = async (req, res) => {
+export const tdelete = async (req, res) => {
   const { id } = req.params;
   try {
     const tiket = await ticket.findByIdAndDelete(id);

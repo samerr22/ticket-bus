@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from "dotenv";
-import appointmentRoutes from './routes/appointmentRoutes.js';
+import tRoutes from './routes/tRoutes.js';
 
 
 
@@ -29,7 +29,7 @@ app.listen(3000, () => {
 
 
 
-app.use('/api', appointmentRoutes);
+app.use('/api', tRoutes);
 
 
 
