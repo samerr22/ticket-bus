@@ -11,19 +11,19 @@ import {
 const router = express.Router();
 
 // Create an appointment
-router.post('/cappointments', tcreate);
+router.post('/cticket', tcreate);
 
 // Get all appointments
-router.get('/gappointments', tget);
+router.get('/gcticket', tget);
 
 // Get a single appointment by ID
-router.get('/appointments/:id', tgett);
+router.get('/ucticket/:id', tgett);
 
 // Update an appointment by ID
-router.put('/uappointments/:id', tupdate);
+router.put('/ucticket/:id', tupdate);
 
 // Delete an appointment by ID
-router.delete('/ppointments/:id', tdelete);
+router.delete('/deletcticket/:id', tdelete);
 
 
 

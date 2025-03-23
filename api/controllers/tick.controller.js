@@ -1,5 +1,4 @@
-import Appointment from '../models/ticket.model.js';
-import Doctor from '../models/docter.model.js';
+
 import ticket from '../models/ticket.model.js';
 
 // Create an appointment
