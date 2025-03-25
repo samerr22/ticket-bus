@@ -9,7 +9,7 @@ export default function Header() {
         
         {/* Logo Section */}
         <div>
-          <img src={youtube} alt="Logo" className="h-10" />
+          <img alt="Logo" className="h-10" />
         </div>
         
         {/* Navigation Links */}

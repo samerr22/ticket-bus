@@ -72,7 +72,7 @@ export default function ManageEmp() {
               placeholder="Search by location name..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full p-2 border rounded-lg"
+              className="w-full  p-2 opacity-80 border rounded-lg"
             />
           </div>
 
@@ -86,7 +86,7 @@ export default function ManageEmp() {
                 filter.map((ticket) => (
                   <div
                     key={ticket._id}
-                    className="bg-white p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all"
+                    className="bg-white bg-opacity-25 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all"
                   >
                     <h3 className="text-xl font-semibold text-gray-800">
                       Name: {ticket.Name}
